@@ -6,8 +6,23 @@
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: "Ruhl";
+  src: url("/fonts/Frank_Ruhl_Libre/FrankRuhlLibre-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Ruhl Medium";
+  src: url("/fonts/Frank_Ruhl_Libre/FrankRuhlLibre-Medium.ttf");
+}
+
+@font-face {
+  font-family: "Vibes";
+  src: url("/fonts/Great_Vibes/GreatVibes-Regular.ttf");
+}
+
 html {
-  font-size: 62.5%;
+  font-size: 52.5%;
   /* 2rem base then grow */
   --header1: calc(2rem + 1vw);
   --header2: calc(3.5rem + 1vw);
@@ -28,6 +43,7 @@ li,
 button,
 label,
 input,
+a,
 p {
   font-size: var(--text);
 }
@@ -45,6 +61,15 @@ h5 {
   font-size: var(--header4);
 }
 
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
 .flex {
   display: flex;
   flex-direction: column;
@@ -52,10 +77,247 @@ h5 {
   align-items: center;
 }
 
-ul {
-  list-style: none;
+body {
+  font-family: "Ruhl", sans-serif;
+  animation: opening 1s ease-in-out;
 }
 
-a {
-  text-decoration: none;
+h1 {
+  font-family: "Vibes", sans-serif;
+}
+
+.main-head {
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+  position: relative;
+}
+
+nav {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  min-height: 10vh;
+  padding: 2rem 0rem;
+}
+
+#logo {
+  flex: 1 1 20rem;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-around;
+  flex: 1 1 20rem;
+}
+
+.hero {
+  min-height: 90vh;
+  width: 95%;
+  margin: 0 0 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+
+.hero-introduction {
+  flex: 2 1 40rem;
+  text-align: center;
+}
+
+.hero-introduction p {
+  padding: 5rem 10rem;
+  color: var(--gray-text);
+}
+
+.hero-introduction h2 {
+  padding: 3rem;
+}
+
+.hero-introduction a {
+  padding: 2rem 8rem;
+  border: 3px solid black;
+  margin-bottom: 4rem;
+}
+
+.hero-images {
+  position: relative;
+  flex: 1 1 40rem;
+  background: linear-gradient(#dad8dd, #dad1d4);
+  z-index: 1;
+}
+
+.hero-elena {
+  width: 90%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.plant {
+  position: absolute;
+  bottom: 0;
+  left: -20%;
+  z-index: -1;
+  transform: translateY(10%) rotateZ(-10deg) rotateX(-90deg);
+  height: 75%;
+  width: 75%;
+  animation: plant-entrance 1.5s ease-in-out 0.5s forwards,
+    plant-shake 2.5s infinite ease alternate-reverse 2s;
+  transform-origin: bottom;
+  max-height: 80%;
+}
+
+.plant2 {
+  left: 40%;
+}
+
+@keyframes opening {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes plant-entrance {
+  from {
+    /* transform: translateY(0%); */
+    transform: translateY(10%) rotateZ(-10deg) rotateX(-90deg);
+  }
+  to {
+    transform: translateY(0%) rotateZ(0deg);
+  }
+}
+
+@keyframes plant-shake {
+  from {
+    transform: rotateZ(-5deg);
+  }
+  to {
+    transform: rotateZ(0deg);
+  }
+}
+
+.hero-introduction p {
+  padding: 3rem 3rem 5rem 3rem;
+}
+
+.burger,
+.menu-check {
+  display: none;
+}
+
+/* ABOUT SECTION */
+.about {
+  min-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.about-text {
+  color: white;
+  background: var(--background-color);
+  flex: 2 1 40rem;
+  justify-content: space-around;
+}
+
+.about-text div {
+  padding: 3rem 8rem;
+}
+
+.about-text h3 {
+  padding: 2rem 0rem;
+  font-family: "Ruhl Medium";
+}
+
+.about-text h2 {
+  font-family: "Vibes";
+  padding: 4rem;
+}
+
+.about-image {
+  flex: 1 1 40rem;
+  position: relative;
+}
+
+.about-image h5 {
+  position: absolute;
+  letter-spacing: 2rem;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -20%);
+}
+
+.about-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 842px) {
+  .hero {
+    width: 100%;
+  }
+
+  .burger {
+    position: relative;
+    display: block;
+  }
+  .burger span {
+    padding: 0.2rem 2rem;
+    background: var(--gray-text);
+    margin: 0.5rem 0rem;
+    display: block;
+    transition: all 0.5s ease;
+  }
+
+  .nav-links a {
+    color: white;
+    font-size: var(--header3);
+    text-decoration: underline;
+  }
+  .nav-links {
+    background: var(--background-color);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 100%;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 1s ease;
+  }
+  .menu-check {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    transform: translate(5%, -50%);
+    width: 5rem;
+    height: 5rem;
+    cursor: pointer;
+    opacity: 0;
+    z-index: 100;
+  }
+  /* + means 'then'. when checked, i want something to happen to nav-links */
+  .menu-check:checked + .nav-links {
+    transform: translate(-100%);
+  }
+  .menu-check:checked ~ .burger span {
+    background: white;
+  }
+  .menu-check:checked ~ .burger span:nth-child(1) {
+    transform: rotate(45deg) translateY(300%);
+  }
+  .menu-check:checked ~ .burger span:nth-child(2) {
+    opacity: 0;
+  }
+  .menu-check:checked ~ .burger span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-300%);
+  }
+
+  .about-text div {
+    padding: 3rem 3rem;
+  }
 }
